@@ -3,6 +3,7 @@ import './App.css';
 import { NavBar } from './Components/navbar'
 import { Intro } from './Components/intro'
 import { Conways } from './Components/conways'
+import Vec2 from './classes/vec2';
 
 function App() {
     return (
@@ -29,8 +30,13 @@ function App() {
                     
                 </div>
             </div>
-            <div className=' mx-auto'>
-                <Conways></Conways>
+            <div className=' mx-auto h-2'>
+                <Conways cells={"10 10,11 11,12 11,13 10,12 9,11 9,10 9,"}></Conways>
+                <div className='mx-auto my-10 text-center'>
+                    This fully functional implementation of conways game of life uses a number of different technologies. 
+                    The internal logic and state management was written in Rust as can be seen in this <a style={{textDecoration:"underline", color: "#007FFF"}} className='font-medium text-blue-600  hover:underline' href="https://remote.collinswisher.net/gitbucket/Collin/GameOfLife">repo</a>.
+                    The board is rendered on a canvas controlled by javascript.    
+                </div><br />
             </div>
         </main>       
     </>
