@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack serve --hot",
-    "build": "wasm-pack.exe build ./wasm/ --release && webpack build"
+    "build": "wasm-pack build ./wasm/ --release && webpack build"
   },
   "keywords": [],
   "author": "",
