@@ -7,3 +7,5 @@
 /wasm/pkg/
 /wasm/wasm-pack.log
 /wasm/target
+build/
+build/*
