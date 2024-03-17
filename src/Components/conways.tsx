@@ -1,20 +1,10 @@
 import React, { MouseEvent, MutableRefObject, useRef, useState } from 'react'
+import { isMobile } from 'react-device-detect'
 import { useEffect } from 'react'
 import { Board, Cell } from 'wasm'
 import Vec2 from '../classes/vec2'
 
 const scale: Cell = new Cell(BigInt(10), BigInt(10));
-
-
-
-// class State {
-//     constructor(width: number, height: number, tile_size: number) {
-//         this.cells = []
-//         this.board = createBoard();
-//     }
-//     cells: Cell[];
-//     board: Board;
-// }
 
 interface Props {
     className?: string;
@@ -23,15 +13,18 @@ interface Props {
 
 export function Conways(props: Props) {
     let tile_size = 30;
+    console.log(isMobile)
+    if(isMobile) {
+        tile_size = 60;
+    }
     const scale: Vec2 = new Vec2(tile_size, tile_size);
     const canvas = useRef<HTMLCanvasElement>(null)
     const board: MutableRefObject<Board> = useRef(createBoard(props.cells))
     const [timeout, setTime] = useState(600);
-    const [speed, setSpeed] = useState(1);
+    const [speed, setSpeed] = useState(65);
     const [running, setRunning] = useState(false);
     const [running_str, setRunning_str] = useState("Play");
     const [Save, setSave] = useState<Board>(board.current)
-    // const state: MutableRefObject<State> = useRef(new State());
     useEffect(() => {
         let cells: Cell[] = board.current.get_cells();
         drawCells(canvas.current?.getContext("2d")!, cells);
@@ -60,7 +53,6 @@ export function Conways(props: Props) {
 
     const canvas_click = (event: MouseEvent) => {
         let rect: DOMRect = event.currentTarget.getBoundingClientRect();
-        // let _state = state.current;
         let _canvas = canvas.current!;
         let scalingX: number = rect.width / _canvas.width;
         let scalingY: number = rect.height / _canvas.height;
@@ -114,16 +106,16 @@ export function Conways(props: Props) {
     return (
         <>
         <div className={props.className}>
-            <div className='flex content-center flex-col h-fit'>
-                <canvas ref={canvas} width={1200} height={1200} style={{border: "1px solid white"}} className=' my-1 md:w-1/2 mx-auto' onClick={canvas_click} ></canvas>
-                <div className=' mb-10 flex md:w-1/2 mx-auto'>
+            <div className='flex content-center flex-col md:h-fit'>
+                <canvas ref={canvas} width={1200} height={1200} style={{border: "1px solid white"}} className=' my-1 md:w-4/5 mx-auto sm:w-80' onClick={canvas_click} ></canvas>
+                <div className=' mb-10 flex md:w-1/2 mx-auto flex-wrap'>
                     <button  onClick={press_button} className=' mx-auto border-4 border-gray-700 p-4 rounded-xl'>{running_str}</button>
                     <button className=' mx-auto border-4 border-gray-700 p-4 rounded-xl' onClick={clear}>Clear</button>
                     {/* <button className='mx-auto border-4 border-gray-700 p-4 rounded-xl' onClick={output}>Output</button> */}
                     <button className='mx-auto border-4 border-gray-700 p-4 rounded-xl' onClick={save}>Save</button>
                     <button className='mx-auto border-4 border-gray-700 p-4 rounded-xl' onClick={load}>Load</button>
                     <span className=' mx-auto my-auto'>
-                    <input type="range" defaultValue={1} min={1} max={100} onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                    <input type="range" defaultValue={65} min={1} max={100} onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                         let value = 800 - (event.target.valueAsNumber * 8);
                         setTime(value);
                         setSpeed(event.target.valueAsNumber);
@@ -140,8 +132,9 @@ export function Conways(props: Props) {
 function drawGrid(ctx: CanvasRenderingContext2D, scale: Vec2) {
     let width = ctx.canvas.width;
     let height = ctx.canvas.height;
+    ctx.lineWidth = 2
     ctx.beginPath();
-    ctx.strokeStyle = "lightgrey"
+    ctx.strokeStyle = "darkgrey"
     for(let i = 0; i < width; i += scale.x) {
         ctx.moveTo(i, 0);
         ctx.lineTo(i, height);
@@ -183,16 +176,3 @@ function str_to_vec2(input: string) {
     }
     return list;
 }
-
-// function drawCells(ctx: CanvasRenderingContext2D, cells: Cell[]) {
-//     let scale: Cell = new Cell(BigInt(10), BigInt(10));
-//     ctx.fillStyle = "white";
-//     ctx.fillRect(0, 0, 400, 400);
-//     ctx.fillStyle = "black"
-//     for(let i = 0; i < cells.length; i++) {
-//         let position = cells[i].mul(scale)
-//         ctx.fillRect(Number(position.x), Number(position.y), 10, 10);
-//         ctx.strokeRect(Number(position.x), Number(position.y), 10, 10);
-//     }
-//     drawGrid(ctx, 10);
-// }
