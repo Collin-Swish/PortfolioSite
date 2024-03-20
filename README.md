@@ -10,3 +10,10 @@ A website built to act as an interactive resume and portfolio.
 * Login page
 * Comment system
 * Project demonstrations
+
+### Technologies used
+* React
+* Tailwind
+* Webpack
+* Web Assembly
+* Rust with Web Assembly bindings
