@@ -22,7 +22,8 @@ export function Login() {
             body: data
         }
         let response = await fetch("/auth/login", options)
-
+        let text = await response.text()
+        console.log(text)
     }
     return (
         <main className="md:w-3/4 sm:w-screen m-auto mx-auto h-screen">
