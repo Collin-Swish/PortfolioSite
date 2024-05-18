@@ -3,7 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "type": "module",
-    "homepage": "https://home.collinswisher.net/app",
+    "homepage": "https://remote.collinswisher.net/app/",
     "dependencies": {
         "@testing-library/jest-dom": "^5.17.0",
         "@testing-library/react": "^13.4.0",
@@ -22,8 +22,8 @@
     },
     "scripts": {
         "start": "react-scripts start",
-        "build": "react-scripts build",
-        "wasm": "mkdir src\\pkg && cd wasm && wasm-pack build --target web --out-dir ../src/pkg && cd .. && move src\\pkg\\wasm_bg.wasm public",
+        "build": "rm -rf build && react-scripts build && mkdir app && mv build/* app && mv app build",
+        "wasm": "mkdir src/pkg && cd wasm && wasm-pack build --target web --release --out-dir ../src/pkg && cd .. && cp src/pkg/wasm_bg.wasm public",
         "test": "react-scripts test",
         "eject": "react-scripts eject"
     },

@@ -1,3 +1,3 @@
 export default {
-    ignores: ["./src/pkg/*"]
+    ignores: ["src/pkg/*"]
 }
