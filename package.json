@@ -24,6 +24,7 @@
         "start": "react-scripts start",
         "build": "rm -rf build && react-scripts build && mkdir app && mv build/* app && mv app build",
         "wasm": "mkdir src/pkg && cd wasm && wasm-pack build --target web --release --out-dir ../src/pkg && cd .. && cp src/pkg/wasm_bg.wasm public && node scripts/eslint_tagger.js",
+        "clean": "rm -rf src/pkg && rm -rf build && rm -rf node_modules && cd wasm && cargo clean",
         "test": "react-scripts test",
         "eject": "react-scripts eject"
     },
