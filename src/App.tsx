@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import { isMobile } from 'react-device-detect';
+import { isMobile } from 'react-device-detect'
 import './App.css';
-import { NavBar } from './Components/navbar'
 import { Intro } from './Components/intro'
 import { Conways } from './Components/conways'
-import Vec2 from './classes/vec2';
 
 function App() {
     let condata = ""
@@ -15,13 +13,13 @@ function App() {
     // else condata = "2 2,3 2,24 21,21 15,20 14,37 37,1 2,15 19,25 19,2 0,21 25,19 24,23 19,23 20,20 17,16 21,17 20,19 16,26 20,21 23,17 21,20 26,3 1,19 15,24 19,21 24,20 23,16 19,19 25,15 21,19 17,14 20,36 37,21 16,36 38,37 39,38 37,25 21,"
     return (
     <>
-        <NavBar></NavBar>
+        {/* <NavBar></NavBar> */}
         <main className="md:w-3/4 sm:w-screen m-auto mx-auto">
             <Intro></Intro>
             <div className="md:mx-auto w-3/4 flex md:flex-row sm:flex-col sm:mx-auto sm:py-8 md:my-12" style={{marginTop: 50, borderTop: "solid grey 2px", paddingTop: "5px"}}>
                 <div className="md:w-1/2 mx-2">
                     <h1 className="text-2xl">Skills</h1>
-                    <ul className="list-disc">
+                    <ul className="">
                         <li>Database Management</li>
                         <li>Test Automation</li>
                         <li>Application Development</li>
@@ -33,7 +31,7 @@ function App() {
                         <li>Web Assembly</li>
                     </ul>
                 </div>
-                <div className="md:w-1/2 mx-4 my-12">
+                <div className="md:w-1/2 mx-4">
                 <h1 className="text-2xl ">Programming languages</h1>
                     <ul>
                         <li>Javascript</li>
@@ -47,7 +45,7 @@ function App() {
                         <li>Bash</li>
                     </ul>
                 </div>
-                <div className="md:w-1/2 mx-4 my-12">
+                <div className="md:w-1/2 mx-4">
                 <h1 className="text-2xl ">Has experience with</h1>
                 <ul>
                     <li>React</li>
@@ -62,7 +60,7 @@ function App() {
                 </ul>
                 </div>
             </div>
-            <div className=' mx-auto h-2 sm:w-3/4 '>
+            <div className=' mx-auto sm:w-3/4 '>
                 <br />
                 <div style={{textAlign: "center"}}>
                     <p className=' text-2xl'>Conways Game of Life</p>

@@ -9,3 +9,5 @@
 /wasm/target
 build/
 build/*
+src/pkg
+**.wasm

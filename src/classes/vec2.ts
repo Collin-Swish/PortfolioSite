@@ -1,4 +1,4 @@
-import { Cell } from 'wasm'
+import { Cell } from '../pkg/wasm'
 
 export default class Vec2 {
     constructor(x: number, y: number) {

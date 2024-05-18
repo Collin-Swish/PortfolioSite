@@ -1,10 +1,10 @@
 import React, { MouseEvent, MutableRefObject, useRef, useState } from 'react'
 import { isMobile } from 'react-device-detect'
 import { useEffect } from 'react'
-import { Board, Cell } from 'wasm'
+import { Board, Cell } from '../pkg/wasm'
 import Vec2 from '../classes/vec2'
 
-const scale: Cell = new Cell(BigInt(10), BigInt(10));
+// const scale: Cell = new Cell(BigInt(10), BigInt(10));
 
 interface Props {
     className?: string;

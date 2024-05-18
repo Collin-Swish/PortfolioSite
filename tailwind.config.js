@@ -1,15 +1,14 @@
-import type { Config } from "tailwindcss";
-
-const config: Config = {
+/** @type {import('tailwindcss').Config} */
+export default {
   content: [
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
-        screens: {
-            'sm': '300px',
+        'sm': '300px',
             // => @media (min-width: 576px) { ... }
       
             'md': '960px',
@@ -17,9 +16,7 @@ const config: Config = {
       
             'lg': '1440px',
             // => @media (min-width: 1440px) { ... }
-        }
     },
   },
   plugins: [],
-};
-export default config;
+}
